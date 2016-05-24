@@ -1,0 +1,32 @@
+{"programVersion":"EDI B2B Web",
+  "formatVersion":"5.01",
+  "waybillInfo":{"waybillDate":"06.05.2016","waybillNumber":"0001"},
+  "reasonName":"договор","reasonNumber":"001","reasonDate":"04.05.2016",
+  "cargoWaybillNumber":"1","cargoWaybillDate":"05.05.2016",
+  "operation":"fdjhgkjd",
+  "shipping":{"sum":"379.96","sumInWords":"Триста семьдесят девять рублей 96 копеек"},
+  "senderInfo":{"entrepreneur":false,"inn":"7710013769","kpp":"779901001","orgName":"ОАО \"ИнфоТеКС\" (ТЕСТ)",
+    "address":{"rf":true,"region":"77"},"gosRegIp":""},
+    "recipientInfo":{"entrepreneur":false,"inn":"7710013769","kpp":"779901001","orgName":"ОАО \"ИнфоТеКС\" (ТЕСТ)",
+      "address":{"rf":true,"region":"01"}},
+      "cargoSender":{"entrepreneur":false,"inn":"7710013769","kpp":"779901001","orgName":"ОАО \"ИнфоТеКС\" (ТЕСТ)",
+        "address":{"rf":true,"region":"77"}},
+        "cargoRecipient":{"entrepreneur":false,"inn":"7710013769","kpp":"779901001","orgName":"ОАО \"ИнфоТеКС\" (ТЕСТ)",
+          "address":{"rf":true,"region":"01"}},
+
+          "products":[
+            {"number":"1","name":"блокнот","code":"111","unitsOfM":"шт","okei":"796",
+              "pack":"11","position":"1","numOfPos":"1","brutto":"1","netto":"1",
+              "price":"100","sumWithoutTax":"100.00","taxRate":"18","tax":"18.00","sumWithTax":"118.00"},
+
+              {"number":"2","name":"ручка","code":"22","unitsOfM":"шт","okei":"796",
+                "pack":"22","position":"2","numOfPos":"2","brutto":"2","netto":"2",
+                "price":"111","sumWithoutTax":"222.00","taxRate":"18","tax":"39.96","sumWithTax":"261.96"}],
+
+                "total":{"numOfPosTotal":"3","bruttoTotal":"3.00","nettoTotal":"3.00",
+                  "sumWithoutTaxTotal":"322.00","taxTotal":"57.96","sumWithTaxTotal":"379.96"},
+
+
+                  "signer":{"entrepreneur":false,"inn":"7710013770",
+                    "rank":"Руководитель направления",
+                    "lastName":"Иванов","firstName":"Иван","middleName":"Иванович"}}
