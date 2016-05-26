@@ -80,7 +80,7 @@
                     {:name "file" :filename (str "test" (crypto.random/url-part 10) ".txt") :content  (java.io.ByteArrayInputStream. ba) :Content-Type "text/plain"}
                     ]})
 
-                                                     ))))
+                                                     )))
 
 ; (def nacxml
 ;          (-> "t1251.xml"
@@ -89,10 +89,10 @@
 ;               cxml/parse))
 
 
-(def zipped (czip/xml-zip nacxml))
-(xml-> zipped :Файл :СвУчДокОбор (attr :ИдОтпр))
-(xml1-> zipped :Файл :Документ (attr :КНД))
-(xml1-> zipped :Файл :Документ :СвТНО :ГрузОт :ГрузОтпр :ИдСв :ИдСв :СвЮЛ (attr :ИННЮЛ) )
+; (def zipped (czip/xml-zip nacxml))
+; (xml-> zipped :Файл :СвУчДокОбор (attr :ИдОтпр))
+; (xml1-> zipped :Файл :Документ (attr :КНД))
+; (xml1-> zipped :Файл :Документ :СвТНО :ГрузОт :ГрузОтпр :ИдСв :ИдСв :СвЮЛ (attr :ИННЮЛ) )
 
 ;;(xml-> zipped :track (attr :id))
 ;;(xml-> zipped  :Файл :Документ :СвТНО :ТН :Таблица :СвТов (attr :Брутто))
