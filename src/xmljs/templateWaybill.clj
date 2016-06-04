@@ -20,7 +20,7 @@
 
           (let [cs (:cargoSender hm)
                 inn (:inn cs)]
-            (when (not (empty? inn))
+            (when (not-empty? inn)
                   [:ГрузОт (adat {:ОКДП (:okdp cs)})
                     [:ГрузОтпр (adat {:ОКПО (:okpo cs)})
                     (companyInfoXmlTemplate cs)
@@ -31,7 +31,7 @@
 
           (let [cr (:cargoRecipient hm)
                 inn (:inn cr)]
-            (when (not (empty? inn))
+            (when (not-empty? inn)
                   [:ГрузПолуч (adat {:ОКПО (:okpo cr)})
                     (companyInfoXmlTemplate cr)
                     (addressXmlTemplate (:address cr))
@@ -40,7 +40,7 @@
 
           (let [si (:senderInfo hm)
                 inn (:inn si)]
-          (when (not (empty? inn))
+          (when (not-empty? inn)
                   [:Поставщик (adat {:ОКПО (:okpo si)})
                     (companyInfoXmlTemplate si)
                     (addressXmlTemplate (:address si))
@@ -49,26 +49,26 @@
 
           (let [ri (:senderInfo hm)
                 inn (:inn ri)]
-          (when (not (empty? inn))
+          (when (not-empty? inn)
                   [:Плательщик (adat {:ОКПО (:okpo ri)})
                     (companyInfoXmlTemplate ri)
                     (addressXmlTemplate (:address ri))
                     (contactsXmlTemplate ri)
                     (bankingXmlTemplate ri)]))
 
-        (when (or (not (empty? (:reasonName hm)))
-                  (not (empty? (:reasonNumber hm))))
+        (when (or (not-empty? (:reasonName hm))
+                  (not-empty? (:reasonNumber hm)))
           [:Основание (adat {:ДатаОсн (:reasonDate hm)
                             :НаимОсн (:reasonName hm)
                             :НомОсн (:reasonNumber hm)})])
 
-        (when (or (not (empty? (:cargoWaybillNumber hm)))
-                  (not (empty? (:cargoWaybillDate hm))))
+        (when (or (not-empty? (:cargoWaybillNumber hm))
+                  (not-empty? (:cargoWaybillDate hm)))
           [:ТранНакл (adat {
             :ДатаТранНакл (:cargoWaybillDate hm)
             :НомТранНакл (:cargoWaybillNumber hm)})])
 
-        (when (not (empty? (:operation hm)))
+        (when (not-empty? (:operation hm))
           [:ВидОперации {} (:operation hm)])
 
           [:ТН {:ДатаТН (:waybillDate (:waybillInfo hm))
@@ -123,11 +123,11 @@
             :СумОтпускПр (:sumInWords (:shipping hm))
             :ДатаОтпуск (:waybillDate (:waybillInfo hm))})
 
-            (when (not (empty? (:grantedBy (:shipping hm))))
+            (when (not-empty? (:grantedBy (:shipping hm)))
                   (dutyPersonXmlTemplate (:ОтпускРазреш (:grantedBy (:shipping hm)))))
-            (when (not (empty? (:booker (:shipping hm))))
+            (when (not-empty? (:booker (:shipping hm)))
                   (dutyPersonXmlTemplate (:Бухгалтер (:booker (:shipping hm)))))
-            (when (not (empty? (:sentBy (:shipping hm))))
+            (when (not-empty? (:sentBy (:shipping hm)))
                   (dutyPersonXmlTemplate (:ОтпускПроизв (:sentBy (:shipping hm)))))]
 
           [:ИнфПол {:ТекстИнф "&lt;Данные&gt;&lt;Реквизит Значение=&quot;6339dfb4-cd2f-4d0b-bbbd-4f8e735896b6&quot; Имя=&quot;ИДДокумента&quot;/&gt;&lt;/Данные&gt;"}]

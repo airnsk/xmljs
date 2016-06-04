@@ -9,7 +9,7 @@
 (defn adat [v]
   " drop attr if empty"
     (apply merge (for [k v
-          :when (not (empty? (str (val k))))]
+          :when (not-empty? (str (val k)))]
            (apply hash-map k ))))
 
 (adat {:A 1  :b " "})
@@ -18,8 +18,8 @@
 (defn contactsXmlTemplate [jsn]
     (let [phone (:phone jsn)
           fax (:fax jsn)]
-    (when (or (not (empty? phone ))
-              (not (empty? fax )))
+    (when (or (not-empty? phone )
+              (not-empty? fax ))
               [:Контакт (adat {:Факс fax
                                :Тлф phone})])))
 
@@ -27,9 +27,9 @@
     (let [account (:bankAccount jsn)
           bik (:bankBik jsn)
           name (:bankName jsn)]
-    (when (or (not (empty? account ))
-              (not (empty? bik ))
-              (not (empty? name )))
+    (when (or (not-empty? account )
+              (not-empty? bik )
+              (not-empty? name ))
         [:БанкРекв (adat {:НомерСчета account})
         [:СвБанк (adat {:БИК bik
                         :НаимБанк name })]])))
@@ -98,7 +98,7 @@
         {:ИдФайл (:fileId jsn)
          :ВерсПрог (:programVersion jsn)
          :ВерсФорм (:formatVersion jsn)}
-    (when (not (empty? (:operator jsn)))
+    (when (not-empty? (:operator jsn))
      (operatorXmlTemplate jsn))
 )
 
@@ -120,11 +120,11 @@
 (defn unknownParticipantXmlTemplate [jsn]
 
 [:НаимГОП {}
-  (if (not (empty? (:orgName jsn)))
+  (if (not-empty? (:orgName jsn))
     [:НаимОрг {}
       (:orgName jsn)
     ]
-    (when (not (empty? (:fio jsn)))
+    (when (not-empty? (:fio jsn))
     [:ФИОИП (adat {:Фамилия (:lastName (:fio))
                    :Имя (:firstName (:fio))
                    :Отчество (:middleName (:fio))})

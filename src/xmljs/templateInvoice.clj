@@ -5,6 +5,9 @@
         [xmljs.templateXML]))
 
 
+
+
+
 (defn createInvoice [hm]
 
   (sexp-as-element
@@ -17,7 +20,7 @@
                     :КодОКВ (:currency (:invoiceInfo hm))}
 
 
-                    (when (not (empty? (:change (:invoiceInfo hm))))
+                    (when (not-empty? (:change (:invoiceInfo hm)))
                       [:ИспрСчФ (adat {:НомИспрСчФ (:number (:change (:invoiceInfo hm)))
                                        :ДатаИспрСчФ (:date (:change (:invoiceInfo hm)))})]
                     )
@@ -27,8 +30,8 @@
                        (addressXmlTemplate (:address (:senderInfo hm)))
                     ]
 
-                    (when (and (or (not (empty? (:dispatcher hm))) ;;;;!!!!!!!!!!!!!!!  проверить логику
-                              (not (empty? (:sameDispatcher hm))))
+                    (when (and (or (not-empty? (:dispatcher hm)) ;;;;!!!!!!!!!!!!!!!  проверить логику
+                              (not-empty? (:sameDispatcher hm)))
                               (:sameDispatcher hm))
                         [:ГрузОт
                         (if (:sameDispatcher hm)
@@ -40,7 +43,7 @@
                         )
                         ]
                     )
-                    (when (not (empty? (:consignee hm)))
+                    (when (not-empty? (:consignee hm))
                       [:ГрузПолуч
                       (unknownParticipantXmlTemplate (:consignee hm))
                       (addressXmlTemplate (:address (:consignee hm)))
@@ -57,7 +60,7 @@
                       (addressXmlTemplate (:address (:recipientInfo hm)))
                     ]
 
-                    (when (not (empty? (:customInfo hm)))
+                    (when (not-empty? (:customInfo hm))
                       [:ИнфПол (adat {:ТекстИнф (:text (:customInfo hm)) :ИдФайлИнфПол (:id (:customInfo hm)) })
 
                       ]

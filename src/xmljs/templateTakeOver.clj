@@ -19,7 +19,7 @@
                   :НаимПервДок (:takeOverName (:takeOverInfo hm))}
 
                   [:Заголовок
-                    (when (not (empty? (:header hm)))
+                    (when (not-empty? (:header hm))
                       (:header hm)
                     )
                   ]
@@ -48,7 +48,7 @@
                                 :СумНДС (:tax x)
                                 :СумУчНДС (:sumWithTax x)
                                 :ИнфПолСтр (:info x)})
-                                (when (not (empty? (:description x)))
+                                (when (not-empty? (:description x))
                                   (:description x))
                             ])
 
@@ -56,15 +56,15 @@
 
 
 
-        (when (or (not (empty? (:executor (:passedBy hm))))
-                  (not (empty? (:attorney (:passedBy hm)))))
+        (when (or (not-empty? (:executor (:passedBy hm)))
+                  (not-empty? (:attorney (:passedBy hm))))
           [:Сдал (adat {:ДатаИсполн (:passedByDate (:passedBy hm))})
-              (when (not (empty? (:executor (:passedBy hm))))
+              (when (not-empty? (:executor (:passedBy hm)))
                   [:ПодписьИсполн
                   (adat {:Должность (:rank (:executor (:passedBy hm))) })
                     (fioXmlTemplate (:fio (:executor (:passedBy hm))))
                   ])
-              (when (not (empty? (:attorney (:passedBy hm))))
+              (when (not-empty? (:attorney (:passedBy hm)))
                 (attorneyXmlTemplate (:attorney (:passedBy hm)))
               )
            ])

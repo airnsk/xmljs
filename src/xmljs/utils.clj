@@ -18,7 +18,8 @@
      ))
 
 
-
+(defmacro not-empty? [checkvar]
+       `(not (empty? ~checkvar)))
 
 
 (defn memit-str
